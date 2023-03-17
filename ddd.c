@@ -1,20 +1,27 @@
+#include <math.h>
 #include <stdio.h>
-int main(void)
+  
+int main()
 {
-    char cData; //character variable
-    
-    /*Get value from the user*/
-    printf("\n Enter any character: ");
-    scanf("%c", &cData);
-    
-    //check range for alphabate
-    if((cData >= 97 && cData <= 122) || (cData >= 65 && cData <= 90))
-    {
-        printf("\n It is an aplhabate.\n\n");
+    int i, sum, num, count = 0;
+    printf(
+        "All Armstrong number between 1 and 1000 are:\n");
+  
+    for (i = 1; i <= 1000; i++) {
+        num = i;
+     
+        while (num != 0) {
+            num /= 10;
+            count++;
+        }
+        num = i;
+        sum = pow(num % 10, count)
+              + pow((num % 100 - num % 10) / 10, count)
+              + pow((num % 1000 - num % 100) / 100, count);
+        // Check for Armstrong Number
+        if (sum == i) {
+            printf("%d ", i);
+        }
+        count = 0;
     }
-    else
-    {
-        printf("\n It is not an aplhabate.\n\n");
-    }
-    return 0;
 }
